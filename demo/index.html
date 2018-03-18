@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>bg-polymer-button demo</title>
+
+    <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../bg-polymer-button.html">
+
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+      </style>
+    </custom-style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic bg-polymer-button demo</h3>
+      <demo-snippet>
+        <template>
+          <bg-polymer-button
+            id="myBgButton"
+            text="&gt; Do NOT Click Me!"
+            className="btn btn-primary"
+            onClick="onClickHandler(this);" >
+          </bg-polymer-button>
+        </template>
+      </demo-snippet>
+    </div>
+    <script>
+        // var el = document.querySelector('bg-button');
+        // el.addEventListener('click', function(e){
+        //   // logs the instance of event-targeting that hosts #myButton
+        //   console.info('target is:', e.target);
+        //   // logs [#myButton, ShadowRoot, event-retargeting,
+        //   //       body, html, document, Window]
+        //   console.info('composedPath is:', e.composedPath());
+        // });
+        var onClickHandler = function myClick(e){
+          console.info('target is:', e);
+        }
+      </script>
+  </body>
+</html>

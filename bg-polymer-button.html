@@ -1,0 +1,87 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="bg-polymer-button">
+  <template>
+    
+    <style>
+      :host {
+        display: block;
+      }
+      .btn {
+        width: auto;
+        text-align: left;
+        text-indent: -10px;
+        padding-left: 45px;
+        font-size: 20px;
+        -webkit-border-radius: 40px;
+        -moz-border-radius: 40px;
+        border-radius: 40px;
+        padding: 7px 30px;
+        border: 0;
+        box-shadow: none;
+        display: inline-block;
+      }
+      .btn-primary {
+        color: #333f48;
+        background: #b3e000;
+        border: none;
+      }
+      .btn-primary:hover {
+        background:#D3F703;box-shadow:none
+      }
+      .btn-secondary {
+        color: #09f;
+        background: 0 0;
+        border: 2px solid #09f;
+        padding: 5px 28px;
+      }
+      .btn-secondary:hover {
+        background: #eee;box-shadow:none
+      }
+    </style>
+    <button
+      id="myButton"
+      type="button" 
+      class$="[[classname]]"
+    >
+      {{text}}
+    </button>
+  </template>
+
+  <script>
+    /**
+     * `bg-polymer-button`
+     * proof of concept for building polymer elements
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class BgPolymerButton extends Polymer.Element {
+      static get is() { return 'bg-polymer-button'; }
+      static get properties() {
+        return {
+          text: {
+            type: String
+          },
+          classname: {
+            type: String
+          },
+        };
+      }
+      constructor() {
+        super();
+      }
+      ready() {
+        super.ready();
+        this.$.myButton.addEventListener('click', e => {this._handleClick(e)});
+      }
+
+      _handleClick(e) {
+        console.info('_handleClick; button was clicked.');
+      }
+    }
+
+    window.customElements.define(BgPolymerButton.is, BgPolymerButton);
+  </script>
+</dom-module>
