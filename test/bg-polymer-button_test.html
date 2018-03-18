@@ -13,38 +13,53 @@
   </head>
   <body>
 
-    <test-fixture id="BasicTestFixture">
+    <test-fixture id="TextPropertyTestFixture">
       <template>
-        <bg-polymer-button></bg-polymer-button>
+        <bg-polymer-button text="button-text"></bg-polymer-button>
       </template>
     </test-fixture>
 
-    <test-fixture id="ChangedPropertyTestFixture">
+    <test-fixture id="OnClickEventTestFixture">
       <template>
-        <bg-polymer-button prop1="new-prop1"></bg-polymer-button>
+        <bg-polymer-button text="my-button-text" className="btn-primary"></bg-polymer-button>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="ClassNamePropertyTestFixture">
+      <template>
+        <bg-polymer-button text="secondary-button-text" className="btn-secondary" ></bg-polymer-button>
       </template>
     </test-fixture>
 
     <script>
       suite('bg-polymer-button', () => {
-
-        test('instantiating the element with default properties works', () => {
-          const element = fixture('BasicTestFixture');
-          assert.equal(element.prop1, 'bg-polymer-button');
-          const elementShadowRoot = element.shadowRoot;
-          const elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello bg-polymer-button!');
-        });
-
-        test('setting a property on the element works', () => {
+        test('setting text property on the element works', () => {
           // Create a test fixture
-          const element = fixture('ChangedPropertyTestFixture');
-          assert.equal(element.prop1, 'new-prop1');
+          const element = fixture('TextPropertyTestFixture');
+          assert.equal(element.getAttribute('text'), 'button-text');
           const elementShadowRoot = element.shadowRoot;
-          const elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello new-prop1!');
+          const elementButton = elementShadowRoot.querySelector('button');
+          assert.equal(elementButton.innerText, 'button-text');
         });
-
+        test('setting className property on the element works', () => {
+          // Create a test fixture
+          const element = fixture('ClassNamePropertyTestFixture');
+          expect(element.getAttribute('classname')).to.equal('btn-secondary');
+          const elementShadowRoot = element.shadowRoot;
+          const elementButton = elementShadowRoot.querySelector('button');
+          expect(elementButton.innerText).to.equal('secondary-button-text');
+          expect(elementButton.getAttribute('class')).to.equal('btn-secondary');
+          // expect(elementButton.style.color).to.equal('#333f48');
+        });
+        // test('the on-click element on the element works', function() {
+        //   const element = fixture('OnClickEventTestFixture');
+        //   element.onclick = sinon.spy();
+        //   // element.listen(element, 'clickHandler', 'on-click');
+        //   element.click();
+        //   const elementShadowRoot = element.shadowRoot;
+        //   const elementButton = elementShadowRoot.querySelector('button');
+        //   expect(elementButton._handleClick).to.have.been.called;
+        // });
       });
     </script>
 
