@@ -1,5 +1,6 @@
 {
   "name": "bg-polymer-button",
+  "version": "0.0.1",
   "description": "proof of concept for building polymer elements",
   "main": "bg-polymer-button.html",
   "dependencies": {

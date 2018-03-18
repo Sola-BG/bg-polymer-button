@@ -1,21 +1,12 @@
 # \<bg-polymer-button\>
 
-proof of concept for building polymer elements
+Proof of concept for building polymer elements
 
-## Install the Polymer-CLI
+Example usage for bg-polymer-button component:-
 
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your element locally.
 
-## Viewing Your Element
-
+## Using the Component
 ```
-$ polymer serve
+<bg-polymer-button id="myBgButton" text=">Do NOT Click Me!" classname="btn btn-primary" onclick="onClickHandler(this);">
+</bg-polymer-button>
 ```
-
-## Running Tests
-
-```
-$ polymer test
-```
-
-Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
